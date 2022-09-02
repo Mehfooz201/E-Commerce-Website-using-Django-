@@ -1,0 +1,59 @@
+{% extends 'blog/basic.html' %}
+
+{% block title %} Blog {% endblock title %}
+
+
+{% block body %}
+
+    <div class="container mt-4">
+      <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark m-0">
+        <div class="col-md-6 px-0">
+          <h1 class="display-4 fst-italic">See here recent blog posts</h1>
+          <p class="lead">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+          <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-3">
+      <!-- Example row of columns -->
+
+        <div class="row mb-2">
+          {% for item in mypost %}
+
+              <div class="col-md-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                  <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary">Sports</strong>
+                    <h3 class="mb-0">{{item.title}}</h3>
+                    <div class="mb-1 text-muted">Aug 15</div>
+                    <p class="card-text mb-auto">{{item.content0|slice:'0:70'}}...</p>
+
+                    <a href="/blog/blogpost/{{item.post_id}}" class="stretched-link" id="qv{{i.id}}" >Continue Reading</a>
+
+                  </div>
+
+                  <div class="col-auto d-none d-lg-block">
+                    <img src='/media/{{item.thumbnail}}' class="bd-placeholder-img" width="200" height="250" role="img" aria-label="Placeholder: Thumbnail"></img>
+                  </div>
+                  
+                </div>
+              </div>
+              {% if forloop.counter|divisibleby:2 %}
+
+          </div>
+            <div class="row my-2">
+              {% endif %} 
+            
+      {% endfor %}    
+
+            {% comment %} </div> {% endcomment %}
+
+    </div> <!-- /container -->
+
+   
+
+  
+
+{% endblock body %}
+

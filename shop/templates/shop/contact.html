@@ -1,0 +1,59 @@
+{% extends 'shop/base.html' %}
+
+{% block title %} Contact Us {% endblock title %}
+
+
+{% block body %}
+
+    <div class="container my-5">
+
+        
+
+        <h3 class="mb-3">Contact Us : </h3>
+
+            <form action="/shop/contact/" method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Full Name :</label>
+                    <input name='name' type="name" class="form-control" id="exampleFormControlInput1" placeholder="Enter Your Name">
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input name='email' type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input name='phone' type="tel" class="form-control" id="exampleFormControlInput1" placeholder="Phone Number">
+                </div>
+
+                <div class="mb-3">
+                    <label for="desc" class="form-label">Example textarea</label>
+                    <textarea name='desc' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </form>    
+    </div>
+
+{% endblock  %}
+
+{% block js%}
+<script>
+
+{% if thank %}
+alert('Thanks for contacting us! Your message has been sent. ');
+localStorage.clear();
+
+document.location = '/shop/contact';
+
+{% endif %}
+
+
+</script>
+
+{% endblock js %}
+
